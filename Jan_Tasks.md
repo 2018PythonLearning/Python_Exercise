@@ -34,8 +34,8 @@
 ### pycharm使用git连接github
 + 首先设置自己的github账号信息：settings》version control》github
     + 填入自己的账号密码，测试是否可登陆
-    + 不要勾选使用ssh，点击apply，ok完成添加
-+ 从github clone项目：
+    + 不要勾选使用ssh（ssh传输设置比较麻烦），点击apply，ok完成添加
++ 从github clone项目（我将你添加入项目后才有权限）：
     + VCS》check out from...》github》连接成功后在第一项项目选择是选择".../python_exercise",然后设置好关联的本地文件夹位置后点击clone
     + 打开刚刚clone的项目，关于项目的同步操作，使用右键选项中的git（具体使用百度一下）
     + 可能有些地方写的不够细致，有疑问请随时联系我
