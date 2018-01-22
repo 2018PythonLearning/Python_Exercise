@@ -29,7 +29,7 @@
 ### 开始使用github协作交流
 + https://github.com/ 注册一个账号 （一般情况下国内网访问不稳定，需要打开代理）
 + 下载github desktop并安装并登陆（暂时不用操作，测试一下登陆即可） https://desktop.github.com/
-+ 下载安装git，之后项目托管等需要此依赖，https://git-scm.com/downloads，下载后全部默认选项安装即可。
++ 下载安装git，之后项目托管等需要此依赖，https://git-scm.com/downloads， 下载后全部默认选项安装即可。
 + 测试git：打开控制台输入git，如果提示无此命令，则百度git环境变量设置（设置完成重启控制台测试）。
 + 上述完成后将github账号告诉我，将账号加入到已创建的项目中，以后协作编辑
 
