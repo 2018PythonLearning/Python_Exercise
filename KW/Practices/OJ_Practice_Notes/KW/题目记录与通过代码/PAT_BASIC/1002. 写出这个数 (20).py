@@ -19,8 +19,8 @@ while i != 0:
     i //= 10
 
 num.reverse()
-for n in num:
-    if n == num[-1]:
+for i, n in enumerate(num):
+    if i == len(num) - 1:
         print(n)
     else:
         print(n, end=' ')
