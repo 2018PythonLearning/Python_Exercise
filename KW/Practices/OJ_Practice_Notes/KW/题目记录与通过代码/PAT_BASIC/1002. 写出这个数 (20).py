@@ -6,6 +6,10 @@ n = int(input())
 i = 0
 pinyin = ['ling', 'yi', 'er', 'san', 'si', 'wu', 'liu', 'qi', 'ba', 'jiu']
 num = []
+
+if n == 0:
+    print(pinyin[0])
+
 while n != 0:
     i += n % 10
     n //= 10
