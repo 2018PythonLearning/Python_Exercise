@@ -4,7 +4,7 @@
 
 n = int(input())
 i = 0
-pinyin = ['ling', 'yi', 'er', 'san', 'si', 'wu', 'liu', 'qi', 'ba', 'jiu', 'shi']
+pinyin = ['ling', 'yi', 'er', 'san', 'si', 'wu', 'liu', 'qi', 'ba', 'jiu']
 num = []
 while n != 0:
     i += n % 10
