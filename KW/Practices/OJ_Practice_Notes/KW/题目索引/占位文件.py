@@ -4,8 +4,6 @@
 @contact: CNGreatZP@gmail.com
 @site: http://www.greatzp.cn
 @software: PyCharm
-@file: 009.py
-@time: 2018/1/16 16:17
+@file: 占位文件.py
+@time: 2018/3/18 15:37
 """
-
-# 暂停一秒输出。

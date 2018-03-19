@@ -9,4 +9,13 @@
 """
 
 # 有四个数字：0、1、2、3、4，能组成多少个互不相同且无重复数字的三位数？各是多少？
-# 请将数目输出来，并这些数打印出来，每个答案请以换行符分隔~~
+
+num = 0
+for i in range(1, 5):
+    for j in range(0, 5):
+        for k in range(0, 5):
+            if (i != j) and (j != k) and (i != k):
+                print("%d%d%d" % (i, j, k))
+                num += 1
+print(num)
+
