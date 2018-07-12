@@ -82,6 +82,7 @@
 * 如果有多个APP，不同APP下Templates目录中的同名.html文件会造成冲突
 	* 在APP的Templates目录下创建以APP名为名称的目录
 	* 将html文件放入新创建的目录下
+	* views里面return第二个参数加上'app名/'mo
 >如果报错找不到模板，需要在setting.py的TEMPLATES中加上 'DIRS': [os.path.join(BASE_DIR, 'templates')]
 >
 >'DIRS': [os.path.join(BASE_DIR, 'blog/template')],
@@ -122,7 +123,7 @@
 	* 使用第三方软件：SQLite Expert Personal
 * 页面呈现数据
 	* 后台步骤
-		* views.py中import models
+		* views.py中from . import models
 		* article = models.Article.objects.get(pk=1) 
 		* 变量 = models.类.objects.get(标识)
 
@@ -213,7 +214,7 @@
 			"{% url 'url_name' %}"
 		* app_name (可变)在使用include来引用另一个url配置文件的时候，在根urls下，写在inlcude()的第二个参数位置`namespace='app_name'`
 
-				path('cmdb/', include('cmdb.urls', namespace='app_name'))
+				path('cmdb/', include(('cmdb.urls', 'app_name'), namespace=None))
 		* url_name （可变）应用下写在path的第三个参数的位置，`name = 'url_name'`
 
 				path('index/', views.index, name='url_name')
@@ -221,6 +222,9 @@
 		* 参数（可变）在有参数的url时使用
 
 				如：path('ceshi/<int:article_id>', views.ceshi, name='ceshi') 时使用参数
+	* 第二种方法，都不需要改，直接超链接就可以了
+ 
+			href="/blog/article_page/{{ article.id }}"
 #### 博客撰写页面
 * 内容
 	* 标题编辑栏
@@ -268,3 +272,30 @@
 
 		数据库对象.变量 = 新变量
 		数据库对象.save()
+### Templates过滤器
+* 什么是过滤器
+	* 写在模板中，属于Django的模板语言
+	* 可以修改模板中的变量，从而显示不同的内容
+* 使用方式
+	* {{ 变量 | 过滤器 }}
+	
+> https://blog.csdn.net/foryouslgme/article/details/52057445
+
+### Django Shell
+* 什么是Django Shell
+	* 它是一个Python的交互式命令行程序
+	* 它自动引入了我们的项目环境
+	* 我们可以使用它与我们的项目进行交互
+* 使用方式
+	
+		命令行中
+		python manage.py shell
+		from blog.models import 数据表类
+* 作用
+	* 可以使用Django shell来进行一些调试工作
+	* 测试未知的方法
+	* 向数据库中插入/更新数据等一系列操作
+
+> manage.py命令选项  
+> https://blog.csdn.net/luanpeng825485697/article/details/79254716
+		
