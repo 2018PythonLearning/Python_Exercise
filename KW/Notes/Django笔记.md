@@ -105,7 +105,8 @@
 		* 字段即类里面的属性（变量）
 		* attr = models.CharField(max_length=64)
 		* 变量名 = models.字段类（参数）
-		>字段类，网上资料：https://www.cnblogs.com/zh605929205/articles/7103825.html
+		>字段类，网上资料：https://www.cnblogs.com/zh605929205/articles/7103825.html  
+		>http://blog.51cto.com/kevinhao/1699014
 * 生成数据表
 	* 命令行进入manage.py同级目录，或在pycharm下方的terminal终端中输入命令：
 
@@ -114,7 +115,8 @@
 
 			python manage.py migrate
 * 修改数据表
-	* https://code.ziqiangxuetang.com/django/django-schema-migration.html
+	* 重新生成一遍
+	* 或https://code.ziqiangxuetang.com/django/django-schema-migration.html
 * 查看
 	* Django会自动在app/migrations/目录下生成移植文件
 	* 执行`python manage.py aqlmigrate 应用名 文件id`查看SQL语句
@@ -238,9 +240,12 @@
 		* type="text"  (文本框)
 		* type="submit"  (提交按钮)
 		* value="值" (为 input 元素设定值)
+	* 文本域
+
+			<textarea  rows="行数" cols="列数" name="参数名">文本</textarea>
 	* `<label>`标签为 input 元素定义标注（标记）
 
-			<form actione="URL" method="post">
+			<form action="URL" method="post">
 				{% scrf_token %}  出现 禁止访问 csrf验证失败时添加
 				<label>文本
 					<input type="text" name="参数名">
@@ -298,4 +303,32 @@
 
 > manage.py命令选项  
 > https://blog.csdn.net/luanpeng825485697/article/details/79254716
+### admin进阶
+> 网络资料：admin的配置属性：  https://www.cnblogs.com/0704L/p/8032988.html
+
+* 创建admin配置类
+	* admin.py中添加
+	
+			class ArticleAdmin（admin.ModelAdmin):
+			（类名可以随便）
+			注册类：
+			admin.site.registre(Article,ArticleAdmin)
+* 显示其他字段
 		
+		在配置类中
+		list_display = ('title', content，'pub_time') 
+		可以显示数据库中title和content
+* 添加发布日期
+	* 在models.py中数据库类中添加一个字段
+	
+			pub_time = models.DateTimeField(auto_now=True)  
+			将时间自动设定为当前时间 
+	 		pub_time = models.DateTimeField(null=True) 
+			可以更改日期
+
+			记得重新进行数据移植
+* 过滤器
+	* admin.py中添加
+	
+			list_filter = ('pub_time',)
+			根据pub_time筛选
