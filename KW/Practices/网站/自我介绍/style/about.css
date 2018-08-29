@@ -1,0 +1,84 @@
+body
+{
+    background-image: url("../imgage/timg (2).jpg");
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-size:100% 100%
+}
+.head
+{
+    margin-left: auto;
+    margin-right: auto;
+    width:330px;
+    height:430px;
+    overflow:hidden;
+    /*border:1px solid #666;*/
+    text-align: center;
+}
+.touxiang
+{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    width:220px;
+    height:220px;
+    border-radius: 50%;
+    overflow:hidden;
+    /*border:1px solid #666;*/
+    text-align: center;
+}
+.touxiang img
+{
+    position: relative;
+    left: -60px;
+    top: 0;
+}
+.main
+{
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    /*border:1px solid #666;*/
+    text-align: center;
+}
+.content
+{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 1300px;
+    height: 700px;
+    overflow: hidden;
+    /*border:1px solid #666;*/
+    text-align: center;
+    background-color:#def9fd;
+    border-radius: 5%;
+}
+.nav ul
+{
+    list-style-type:none;
+    position:fixed;
+    top:250px;
+    left:20px;
+    background-color:#def9fd;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top:20px;
+    padding-bottom:20px;
+    border-radius: 10%;
+}
+.nav a
+{
+    font-size:40px;
+    display:block;
+    text-decoration:none;
+}
+.music audio
+{
+    position:fixed;
+    bottom:0%;
+    right:0%;
+}
