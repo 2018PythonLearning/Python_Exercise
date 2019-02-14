@@ -16,36 +16,45 @@ if __name__=="__main__":
         df['dynasty'] = s
     dynasty = df['dynasty']
 
-    i = 5
-    while i < 10:
+
+
+    i = 6500
+    while i < 6515:
         print(i)
         print(name[i])
-        url = 'https://www.so.com/s?q=' + name[i] + '_360百科'
+        url = 'https://www.baidu.com/s?wd=' + name[i].replace(' ', '')
         s = urllib.parse.quote(url,safe=string.printable)
 
         # cj = http.cookiejar.CookieJar()
         # opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
         # urllib.request.install_opener(opener)
+        print(s)
+        request = urllib.request.Request(s)
+        request.add_header("User-Agent", 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:54.0) Gecko/20100101 Firefox/54.0')
+        response = urllib.request.urlopen(request)
 
-        # request = urllib.request.Request(s)
-        # request.add_header("user-agent", "Mozilla/5.0")
 
-        response = urllib.request.urlopen(s)
+
         soup = BeautifulSoup(response, 'html.parser')
         # link_node=soup.find('h3',class_=re.compile(r"res-title "))
-        link_node = soup.find('a', text = re.compile("_360百科"))
-        print(link_node)
+        # link_node = soup.find(class_ = re.compile(r"c-tools"))
+        # link_node = soup.find(class_="c-tools")
+        link_node = soup.find(attrs={"data-tools" : re.compile(r".*baike.baidu.com.*")})
         if link_node == None:
             i+=1
             continue
+        print(link_node["data-tools"])
+
         # link_node = link_node.find_parent()
 
+        print(link_node["data-tools"].split("\'")[3])
+        url = link_node["data-tools"].split("\'")[3]
 
 
-        try:
-            url = link_node['data-url']
-        except KeyError:
-            url = link_node['herf']
+        # try:
+        #     url = link_node['data-url']
+        # except KeyError:
+        #     url = link_node['herf']
         response = urllib.request.urlopen(url)
 
         request = urllib.request.Request(url)  # 创键Request对象
@@ -53,10 +62,19 @@ if __name__=="__main__":
         response2 = urllib.request.urlopen(request)  # 发送请求获取结果
 
         soup = BeautifulSoup(response2, 'html.parser')
-        link_node = soup.find('p', title=re.compile(r"所处时代"))
+
+
+        html = response.read().decode('utf-8')
+        with open("./test.html", 'w', encoding='utf-8') as f:
+            f.write(html)
+        f.close()
+
+        link_node = soup.find('dt', text=re.compile(r"所处时代"))
 
         if link_node == None:
-            link_node = soup.find('p', text=re.compile(r"国籍"))
+            link_node = soup.find('dt', text=re.compile(r"国.*籍"))
+        if link_node == None:
+            link_node = soup.find('dt', text=re.compile(r"朝.*代"))
         if link_node == None:
             i += 1
             continue
@@ -65,12 +83,15 @@ if __name__=="__main__":
 
         print(next_siblings.get_text())
         dynasty[i] = next_siblings.get_text()
-        df.to_csv(r'G:\编程\赵鹏编程\连接\Python_Exercise\files\person.csv', index=0)
+        if i % 10 == 0:
+            df.to_csv(r'G:\编程\赵鹏编程\连接\Python_Exercise\files\person.csv', index=0)
         # except KeyError:
         #     i+=1
         #     continue
 
         i+=1
+
+    df.to_csv(r'G:\编程\赵鹏编程\连接\Python_Exercise\files\person.csv', index=0)
 
 
 

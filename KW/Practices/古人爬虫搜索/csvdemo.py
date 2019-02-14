@@ -4,17 +4,19 @@ import numpy as np
 import pandas as pd
 
 df = pd.read_csv(r'G:\编程\赵鹏编程\连接\Python_Exercise\files\person.csv')
-name = df['name'][0]
-print(name)
-try:
-    df['dynasty']
-except KeyError:
-    s = pd.Series()
-    df['dynasty']= s
-df['dynasty'][1] = '5'
+# name = df['name'][0]
+# print(name)
+# try:
+#     df['dynasty']
+# except KeyError:
+#     s = pd.Series()
+#     df['dynasty']= s
+# df['dynasty'][1] = '5'
 
-print(df.shape)
-print()
+# print(df.shape)
+# print()
+for d in range(0,50):
+    df['dynasty'] = ''
 df.to_csv(r'G:\编程\赵鹏编程\连接\Python_Exercise\files\person.csv', index=0)
 
 
